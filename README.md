@@ -19,6 +19,14 @@ sorts to do repetitive tasks. For example, when I worked on
 the original MineSaga minions plugin, some of those tasks
 were mining blocks or farming mobs.
 
+# Download
+
+If you don't want to build yourself, you can download a
+pre-compiled JAR from the
+[releases](https://github.com/AgentTroll/minions/releases)
+page.
+
+
 # Building
 
 ``` shell
@@ -38,6 +46,7 @@ local maven repository.
 - Collects the correct block experience
 - Block break animation (on the block, not the arm swing)
 - Persists over restarts
+- MySQL support
 - Nameable
 
 # Notes
@@ -48,3 +57,7 @@ local maven repository.
 # Credits
 
 Built with [IntelliJ IDEA](https://www.jetbrains.com/idea/)
+
+Uses [Guice](https://github.com/google/guice), 
+[HikariCP](https://github.com/brettwooldridge/HikariCP) and
+[FastUUID](https://github.com/jchambers/fast-uuid)
