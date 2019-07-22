@@ -1,0 +1,55 @@
+# Minions config
+
+# Database configuration
+database:
+  address: "localhost"
+  port: 3306
+  db-name: "minecraft"
+  user: "root"
+  pass: "password"
+  table: "minions"
+
+spawn-egg:
+  type: BAT_SPAWN_EGG
+  name: "Minion Spawn Egg"
+  lore:
+    - "Right click a block"
+    - "to spawn a minion!"
+
+# Internal storage inventory configuration
+internal-inv-title: "Minion Inventory"
+internal-inv-size: 36
+
+# Right-click menu configuration
+menu:
+  title: "Minion"
+  size: 27
+
+  rename:
+    slot: 9
+    type: NAME_TAG
+    name: "Rename Minion"
+
+  mode:
+    slot: 11
+    none:
+      type: GLASS_PANE
+      name: "No mode currently set"
+    mining:
+      type: DIAMOND_PICKAXE
+      name: "Mining"
+
+  inventory:
+    slot: 13
+    type: CHEST
+    name: "View Inventory"
+
+  exp:
+    slot: 15
+    type: EXPERIENCE_BOTTLE
+    name: "Collect XP"
+
+  remove:
+    slot: 17
+    type: BARRIER
+    name: "Remove Minion"

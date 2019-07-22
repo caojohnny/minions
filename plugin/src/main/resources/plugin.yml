@@ -1,0 +1,10 @@
+main: com.gmail.woodyc40.minions.Minions
+name: Minions
+version: ${project.version}
+load: STARTUP
+api-version: "1.14"
+
+commands:
+  minions:
+    usage: /minions [give <player> [amount]]
+    description: "Commands to manage minions"
