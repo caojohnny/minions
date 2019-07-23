@@ -46,12 +46,20 @@ public abstract class MiningMode implements Mode {
         ArmorStand entity = minion.getEntity();
         List<Block> list = entity.getLineOfSight(null, 1);
         if (list.size() != 2) {
+            if (this.block != null) {
+                this.showBreakAnimation(this.block, -1);
+            }
+
             return;
         }
 
         Block block = list.get(1);
         Material type = block.getType();
         if (IGNORED_TYPES.contains(type)) {
+            if (this.breakTicks > 0) {
+                this.showBreakAnimation(block, -1);
+            }
+
             this.block = null;
             return;
         }

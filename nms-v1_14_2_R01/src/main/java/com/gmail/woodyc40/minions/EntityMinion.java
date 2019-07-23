@@ -31,6 +31,8 @@ public class EntityMinion extends EntityArmorStand implements Minion {
         this.setSlot(EnumItemSlot.CHEST, CHESTPLATE);
         this.setSlot(EnumItemSlot.LEGS, LEGGINGS);
         this.setSlot(EnumItemSlot.FEET, BOOTS);
+
+        this.setNoGravity(true);
     }
 
     @Override
@@ -40,6 +42,25 @@ public class EntityMinion extends EntityArmorStand implements Minion {
         Mode currentMode = this.data.getMode();
         if (currentMode != null) {
             currentMode.tick(this);
+        }
+    }
+
+    @Override
+    public boolean ax() {
+        // Disable movement with water
+        return false;
+    }
+
+    @Override
+    public boolean damageEntity(DamageSource damagesource, float f) {
+        // Disable ALL damage
+        return false;
+    }
+
+    @Override
+    public void move(EnumMoveType enummovetype, Vec3D vec3d) {
+        if (enummovetype != EnumMoveType.PISTON) {
+            super.move(enummovetype, vec3d);
         }
     }
 
