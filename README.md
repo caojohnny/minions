@@ -59,5 +59,6 @@ local maven repository.
 Built with [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 
 Uses [Guice](https://github.com/google/guice), 
+the [Checker Framework](https://checkerframework.org/),
 [HikariCP](https://github.com/brettwooldridge/HikariCP) and
 [FastUUID](https://github.com/jchambers/fast-uuid)
