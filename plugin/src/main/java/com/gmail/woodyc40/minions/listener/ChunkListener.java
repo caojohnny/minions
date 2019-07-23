@@ -13,6 +13,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.world.ChunkLoadEvent;
 import org.bukkit.event.world.ChunkUnloadEvent;
 import org.bukkit.event.world.WorldSaveEvent;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.UUID;
 
@@ -59,6 +61,8 @@ public class ChunkListener implements Listener {
             if (minion != null) {
                 MinionData data = minion.getData();
                 if (data != null) {
+                    // Copy not needed here because minion data cannot be modified
+                    // by the time the chunk unloads; entity has unloaded already
                     Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () ->
                             this.dm.writeData(minion.getPersistentId(), data));
                 }
@@ -73,10 +77,32 @@ public class ChunkListener implements Listener {
             if (minion != null) {
                 MinionData data = minion.getData();
                 if (data != null) {
+                    // Copy needed because data may change during async write
+                    MinionData copy = copyData(data);
                     Bukkit.getScheduler().runTaskAsynchronously(this.plugin, () ->
-                            this.dm.writeData(minion.getPersistentId(), data));
+                            this.dm.writeData(minion.getPersistentId(), copy));
                 }
             }
         }
+    }
+
+    private static MinionData copyData(MinionData original) {
+        MinionData copy = new MinionData();
+
+        Inventory originalInventory = original.getInventory();
+        Inventory copyInventory = Bukkit.createInventory(null, originalInventory.getSize());
+        for (int i = 0; i < originalInventory.getSize(); i++) {
+            ItemStack item = copyInventory.getItem(i);
+            if (item != null) {
+                copyInventory.setItem(i, item);
+            }
+        }
+
+        copy.setOwner(original.getOwner());
+        copy.setInventory(copyInventory);
+        copy.setExperience(original.getExperience());
+        copy.setMode(original.getMode());
+
+        return copy;
     }
 }
