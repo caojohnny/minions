@@ -16,12 +16,13 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 public abstract class Menu implements Listener {
+    protected final Plugin plugin;
     protected Map<Integer, Consumer<InventoryClickEvent>> clickListeners =
             new HashMap<>();
     protected Inventory inventory;
 
     public Menu(Plugin plugin) {
-        Bukkit.getPluginManager().registerEvents(this, plugin);
+        this.plugin = plugin;
     }
 
     @EventHandler
@@ -59,6 +60,7 @@ public abstract class Menu implements Listener {
                 this.getTitle());
         this.draw((Player) he);
 
+        Bukkit.getPluginManager().registerEvents(this, this.plugin);
         he.openInventory(inventory);
     }
 
