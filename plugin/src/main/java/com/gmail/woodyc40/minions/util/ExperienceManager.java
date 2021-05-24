@@ -34,7 +34,7 @@ public class ExperienceManager {
 	static {
 		// 25 is an arbitrary value for the initial table size - the actual
 		// value isn't critically important since the table is resized as needed.
-		// AgentTroll - actually it is important because it will crash the server if it isn't...
+		// caojohnny - actually it is important because it will crash the server if it isn't...
 		initLookupTables(5000);
 	}
 

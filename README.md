@@ -3,7 +3,7 @@
 This isn't the first time I've worked on a minions plugin,
 or the second, or even third time. Hopefully, it I can get
 it 
-[done right this time](https://agenttroll.github.io/blog/2018/03/25/those-mistakes-are-mine.html)
+[done right this time](https://caojohnny.github.io/blog/2018/03/25/those-mistakes-are-mine.html)
 though.
 
 I'm again bored, and though I have two more "projects" 
@@ -23,14 +23,14 @@ were mining blocks or farming mobs.
 
 If you don't want to build yourself, you can download a
 pre-compiled JAR from the
-[releases](https://github.com/AgentTroll/minions/releases)
+[releases](https://github.com/caojohnny/minions/releases)
 page.
 
 
 # Building
 
 ``` shell
-git clone https://github.com/AgentTroll/minions.git
+git clone https://github.com/caojohnny/minions.git
 cd minions
 mvn clean install
 ```
